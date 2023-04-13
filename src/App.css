@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  background: linear-gradient(180deg, #2B2F53 3.16%, #1D1C34 36.05%);
+  box-shadow: -10px 30px 80px rgba(59, 38, 123, 0.7);
+  color: white;
+  font-family: 'Kanit', sans-serif;
+  justify-content: center;
 }
 
 .App-logo {
@@ -26,6 +31,12 @@
 
 .App-link {
   color: #61dafb;
+}
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 
 @keyframes App-logo-spin {

@@ -35,7 +35,13 @@ Sets the gender filter for the search results.
 @return {object} - A Redux action object with the gender as payload.
 */
 
-export const setGenderFilter = (gender) => ({
-    type: SET_GENDER_FILTER,
-    payload: gender,
-  });
+export const setGenderFilter = (gender) => {
+    return dispatch => {dispatch({
+        type: SET_GENDER_FILTER,
+        payload: gender
+        })
+    }
+  };
+
+//filter by race
+

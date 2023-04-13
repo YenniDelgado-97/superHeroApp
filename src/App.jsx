@@ -6,7 +6,6 @@ A functional component that renders the Superhero Search app.
 @property {Object[]} props.superheroes - An array of superhero objects retrieved from the Superhero API.
 */
 
-
 import "./App.css";
 import React, { useEffect } from "react";
 import SearchHero from "./components/SearchHero";
@@ -18,6 +17,9 @@ import SuperHeroCard from "./components/SuperHeroCard/SuperHeroCard";
 
 
 function App(props) {
+  const filteredSuperheroes =  props.genderFilter
+  ? props.superheroes.filter((hero) => hero.appearance.gender === props.genderFilter)
+        : props.superheroes;
   return (
     <div className="App">
       <header>
@@ -28,7 +30,7 @@ function App(props) {
       {props.loadingState ? <h1>loading....</h1> : <></>}
       <div className="cards-container">
       {props.superheroes &&
-        props.superheroes.map((sh) => {
+        filteredSuperheroes.map((sh) => {
           return (
             <SuperHeroCard key={sh.id} sh={sh}/>
           );
@@ -47,8 +49,10 @@ Maps the state properties of the app to the props of the component.
 
 const mapStateToProps = (state) => {
   return {
+    genderFilter: state.superHeroReducer.genderFilter,
     loadingState: state.superHeroReducer.loadingState,
     superheroes: state.superHeroReducer.superheroes,
+    
   };
 };
 

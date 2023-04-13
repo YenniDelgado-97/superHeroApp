@@ -18,10 +18,7 @@ function SearchHero(props) {
   const handleChange = (event) => {
     setSearch(event.target.value);
   };
-  const filteredSuperheroes = props.genderFilter
-      ? props.superheroes.filter((hero) => hero.appearance.gender === props.genderFilter)
-      : props.superheroes;
-
+  
   return (
     <div className="search">
       <form
@@ -43,9 +40,9 @@ function SearchHero(props) {
       </form>
       {props.errorState ? <p className="error">{props.error}</p> : <></>}
       <div className="filter-buttons">
-        <button onClick={() => setGenderFilter("Male")}>Male</button>
-        <button onClick={() => setGenderFilter("Female")}>Female</button>
-        <button onClick={() => setGenderFilter(null)}>Clear</button>
+        <button onClick={() => props.setGenderFilter("Male")}>Male</button>
+        <button onClick={() => props.setGenderFilter("Female")}>Female</button>
+        <button onClick={() => props.setGenderFilter(null)}>Clear</button>
       </div>
       {/* <ul>
         {filteredSuperheroes.map((hero) => (

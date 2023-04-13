@@ -1,5 +1,6 @@
 import axios from "axios";
 import { SET_GENDER_FILTER } from "./types"
+import { SET_RACE_FILTER } from "./types";
 
 /**
 
@@ -43,5 +44,18 @@ export const setGenderFilter = (gender) => {
     }
   };
 
-//filter by race
+/**
+ * Sets the race filter for the list of characters.
+ * @param {string} race - The race to filter by.
+ * @returns {Function} A function that dispatches an action to set the race filter.
+ */
 
+export const setRaceFilter = (race) => {
+    return dispatch => {dispatch({
+        type: SET_RACE_FILTER,
+        payload: race
+        })
+    }
+  };
+
+  

@@ -14,12 +14,19 @@ import { useDispatch } from "react-redux";
 import SuperHeroCard from "./components/SuperHeroCard/SuperHeroCard";
 // import FilterHero from "./components/FilterHero;
 
-
-
 function App(props) {
-  const filteredSuperheroes =  props.genderFilter
-  ? props.superheroes.filter((hero) => hero.appearance.gender === props.genderFilter)
-        : props.superheroes;
+  const filteredSuperheroes = props.genderFilter
+    ? props.superheroes.filter(
+        (hero) => hero.appearance.gender === props.genderFilter
+      )
+    : props.superheroes;
+
+  const filteredSuperheroesByRace = props.raceFilter
+    ? props.superheroes.filter(
+        (hero) => hero.appearance.race === props.raceFilter
+      )
+    : props.superheroes;
+
   return (
     <div className="App">
       <header>
@@ -29,13 +36,15 @@ function App(props) {
       <h1> Super Hero App</h1>
       {props.loadingState ? <h1>loading....</h1> : <></>}
       <div className="cards-container">
-      {props.superheroes &&
-        filteredSuperheroes.map((sh) => {
-          return (
-            <SuperHeroCard key={sh.id} sh={sh}/>
-          );
-        })}
-        </div>
+        {props.superheroes && !props.raceFilter &&
+          filteredSuperheroes.map((sh) => {
+            return <SuperHeroCard key={sh.id} sh={sh} />;
+          })}
+        {props.superheroes && props.raceFilter &&
+          filteredSuperheroesByRace.map((sh) => {
+            return <SuperHeroCard key={sh.id} sh={sh} />;
+          })}
+      </div>
     </div>
   );
 }
@@ -50,9 +59,9 @@ Maps the state properties of the app to the props of the component.
 const mapStateToProps = (state) => {
   return {
     genderFilter: state.superHeroReducer.genderFilter,
+    raceFilter: state.superHeroReducer.raceFilter,
     loadingState: state.superHeroReducer.loadingState,
     superheroes: state.superHeroReducer.superheroes,
-    
   };
 };
 

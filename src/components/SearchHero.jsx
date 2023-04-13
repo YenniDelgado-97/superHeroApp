@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { submitSearch } from "../store/actions";
 import { setGenderFilter } from "../store/actions";
+import { setRaceFilter } from "../store/actions";
 import { Link } from "react-router-dom";
 
 /**
@@ -15,9 +16,15 @@ import { Link } from "react-router-dom";
 function SearchHero(props) {
   console.log("PROPS", props);
   const [search, setSearch] = useState("");
+  const [race,setRace] = useState("");
   const handleChange = (event) => {
     setSearch(event.target.value);
   };
+  const handleChangeRace = (event) => {
+    console.log("event.target.value", event.target.value)
+    setRace(event.target.value);
+  };
+
   
   return (
     <div className="search">
@@ -44,6 +51,15 @@ function SearchHero(props) {
         <button onClick={() => props.setGenderFilter("Female")}>Female</button>
         <button onClick={() => props.setGenderFilter(null)}>Clear</button>
       </div>
+      <input
+          type="text"
+          id="race"
+          name="race"
+          value={race}
+          onChange={handleChangeRace}
+        />
+        <button onClick={() => props.setRaceFilter(race)}>Filter By Race</button>
+
       {/* <ul>
         {filteredSuperheroes.map((hero) => (
           <li key={hero.id}>
@@ -71,9 +87,10 @@ const mapStateToProps = (state) => {
     errorState: state.superHeroReducer.errorState,
     error: state.superHeroReducer.error,
     genderFilter: state.superHeroReducer.genderFilter,
+    raceFilter:state.superHeroReducer.raceFilter
   };
 };
 
-export default connect(mapStateToProps, { submitSearch, setGenderFilter })(
+export default connect(mapStateToProps, { submitSearch, setGenderFilter, setRaceFilter})(
   SearchHero
 );

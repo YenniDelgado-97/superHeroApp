@@ -1,4 +1,5 @@
 import axios from "axios";
+import { SET_GENDER_FILTER } from "./types"
 
 
 export const submitSearch = search => {
@@ -20,3 +21,10 @@ export const submitSearch = search => {
         .catch(error => console.log(error.message))
     }
 }
+
+// search by gender
+
+export const setGenderFilter = (gender) => ({
+    type: SET_GENDER_FILTER,
+    payload: gender,
+  });

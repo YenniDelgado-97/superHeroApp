@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import SearchHero from "./components/SearchHero";
 import { connect } from "react-redux";
 import { useDispatch } from "react-redux";
+import SuperHeroCard from "./components/SuperHeroCard/SuperHeroCard";
 // import FilterHero from "./components/FilterHero;
 
 function App(props) {
@@ -14,33 +15,14 @@ function App(props) {
       </header>
       <h1> Super Hero App</h1>
       {props.loadingState ? <h1>loading....</h1> : <></>}
+      <div className="cards-container">
       {props.superheroes &&
         props.superheroes.map((sh) => {
           return (
-            <div className="card">
-              <img src={sh.image.url} />
-              <div key={sh.id}>{sh.name}</div>
-              <div className="stadistics-container">
-                <div className="powerstats">
-                  <h2>Powerstats</h2>
-                  <p>Intelligence:{sh.powerstats.intelligence}</p>
-                  <p>Strentgh:{sh.powerstats.strength}</p>
-                  <p>Speed:{sh.powerstats.speed}</p>
-                  <p>Durability:{sh.powerstats.durability}</p>
-                  <p>Power:{sh.powerstats.power}</p>
-                  <p>Combat:{sh.powerstats.combat}</p>
-                </div>
-                <div className="apereance">
-                <h2>Appearance</h2>
-                  <p>Gender:{sh.appearance.gender}</p>
-                  <p>Race:{sh.appearance.race}</p>
-                  <p>Height:{sh.appearance.height}</p>
-                  <p>Weight:{sh.appearance.weight}</p>
-                </div>
-              </div>
-            </div>
+            <SuperHeroCard key={sh.id} sh={sh}/>
           );
         })}
+        </div>
     </div>
   );
 }

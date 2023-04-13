@@ -8,7 +8,7 @@ const initialState = {
 
 export const superHeroReducer = (state = initialState, action) => {
     switch(action.type){
-        case "SEARCH_SUCCESS":
+        case "SEARCH_SUCCES":
             return {
                 ...state,
                 loadingState: true,

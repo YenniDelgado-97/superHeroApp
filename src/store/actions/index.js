@@ -1,6 +1,7 @@
 import axios from "axios";
 import { SET_GENDER_FILTER } from "./types"
 import { SET_RACE_FILTER } from "./types";
+import { SET_INTELLIGENCE_FILTER } from "./types";
 
 /**
 
@@ -57,5 +58,19 @@ export const setRaceFilter = (race) => {
         })
     }
   };
-
   
+
+/**
+
+Set the intelligence filter for filtering superheroes by intelligence.
+@param {number} intelligence - The intelligence level to filter by.
+@returns {Function} - The Redux thunk function that dispatches an action to update the intelligence filter.
+*/
+
+export const setIntelligenceFilter = (intelligence) => {
+    return dispatch => {dispatch({
+        type: SET_INTELLIGENCE_FILTER,
+        payload: intelligence
+        })
+    }
+  };

@@ -60,6 +60,7 @@ const mapStateToProps = (state) => {
   return {
     genderFilter: state.superHeroReducer.genderFilter,
     raceFilter: state.superHeroReducer.raceFilter,
+    intelligence: state.superHeroReducer.intelligenceFilter,
     loadingState: state.superHeroReducer.loadingState,
     superheroes: state.superHeroReducer.superheroes,
   };

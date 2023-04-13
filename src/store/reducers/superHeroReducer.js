@@ -5,7 +5,8 @@ const initialState = {
   superheroes: [],
   searches: [],
   genderFilter: null,
-  raceFilter:null
+  raceFilter:null,
+  intelligenceFilter:null
 };
 
 /**
@@ -54,6 +55,11 @@ export const superHeroReducer = (state = initialState, action) => {
           ...state,
           raceFilter: action.payload,
         };
+        case "SET_INTELLIGENCE_FILTER":
+          return {
+            ...state,
+            raceFilter: action.payload,
+          };
   
 
     default:

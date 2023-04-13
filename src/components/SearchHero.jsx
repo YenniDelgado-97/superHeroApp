@@ -1,26 +1,38 @@
 import React, {useState} from "react";
 import { connect } from "react-redux";
+import { submitSearch } from "../store/actions";
+
+
+
+
 
 /**
  * Component for searching heroes
  * @component SearchHero
  * @param {Object} props - component properties
- * @param {string}props.loadingState - state of loading of the data it is false
+ * param {Boolean}props.loadingState - state of loading of the data it is false
  * @returns {JSX.Element} - element jsx that is rendered
  */
 
 function SearchHero(props){
-    const [search, setSearch] = useState("")
+
     console.log("PROPS", props)
+    const [search, setSearch] = useState("")
+    const handleChange = event => {
+setSearch(event.target.value)
+    }
+   
 
     return (
         <div className="search">
-            <form>
+            <form
+                onSubmit={(e)=> {e.preventDefault(); props.submitSearch(search)} }>
                 <label htmlFor="search">Search:</label>
                 <input type="text" 
                 id="search" 
                 name="search" 
                 value={search}
+                onChange={handleChange}
                 />
 
                 <button>Search</button>
@@ -45,4 +57,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {})(SearchHero)
+export default connect(mapStateToProps, {submitSearch})(SearchHero)

@@ -12,6 +12,12 @@ function App(props) {
             <header><SearchHero/></header>
             <h1> Super Hero App</h1>
             {props.loadingState ? <h1>loading....</h1>: <></>}
+            {props.superheroes && props.superheroes.map(sh => {
+                return (
+                    <div key={sh.id}>{sh.name}
+                    <img src= {sh.image.url} /></div>
+                )
+            })}
 
         </div>
     );
@@ -21,7 +27,8 @@ function App(props) {
 const mapStateToProps = (state) => {
 
     return{
-        loadingState: state.superHeroReducer.loadingState
+        loadingState: state.superHeroReducer.loadingState,
+        superheroes: state.superHeroReducer.superheroes
     }
     
 }

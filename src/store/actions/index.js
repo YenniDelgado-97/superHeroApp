@@ -13,7 +13,7 @@ export const submitSearch = search => {
             if(res.data.error){
                 dispatch({type:"SEARCH_ERROR",payload: res.data.error})
             }else{
-                dispatch({type:"SEARCH_SUCCES",payload: res.data.result})
+                dispatch({type:"SEARCH_SUCCES",payload: res.data.results})
                 console.log("respuesta", res.data)
             }
         })

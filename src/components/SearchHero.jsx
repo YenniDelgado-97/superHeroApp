@@ -38,6 +38,7 @@ setSearch(event.target.value)
                 <button>Search</button>
 
             </form>
+            {props.errorState ? <p className="error">{props.error}</p> : <></>}
         </div>
     )
 
@@ -53,7 +54,9 @@ setSearch(event.target.value)
 const mapStateToProps = state => {
     console.log("MSTP", state)
     return {
-        loadingState: state.superHeroReducer.loadingState
+        loadingState: state.superHeroReducer.loadingState,
+        errorState: state.superHeroReducer.errorState,
+        error: state.superHeroReducer.error
     }
 }
 

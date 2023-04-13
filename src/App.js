@@ -1,3 +1,12 @@
+/**
+
+A functional component that renders the Superhero Search app.
+@typedef {Object} App
+@property {boolean} props.loadingState - A boolean value indicating whether the app is currently in a loading state.
+@property {Object[]} props.superheroes - An array of superhero objects retrieved from the Superhero API.
+*/
+
+
 import "./App.css";
 import React, { useEffect } from "react";
 import SearchHero from "./components/SearchHero";
@@ -5,6 +14,8 @@ import { connect } from "react-redux";
 import { useDispatch } from "react-redux";
 import SuperHeroCard from "./components/SuperHeroCard/SuperHeroCard";
 // import FilterHero from "./components/FilterHero;
+
+
 
 function App(props) {
   return (
@@ -26,6 +37,13 @@ function App(props) {
     </div>
   );
 }
+
+/**
+
+Maps the state properties of the app to the props of the component.
+@param {Object} state - The state of the app.
+@return {Object} An object containing the state properties of the app.
+*/
 
 const mapStateToProps = (state) => {
   return {

@@ -1,6 +1,12 @@
 import axios from "axios";
 import { SET_GENDER_FILTER } from "./types"
 
+/**
+
+Sends a search request to the Superhero API based on a search query string.
+@param {string} search - The search query string.
+@return {function} - A Redux Thunk function that dispatches actions based on the outcome of the API call.
+*/
 
 export const submitSearch = search => {
     return dispatch => {
@@ -22,7 +28,12 @@ export const submitSearch = search => {
     }
 }
 
-// search by gender
+/**
+
+Sets the gender filter for the search results.
+@param {string} gender - The gender to filter the search results by.
+@return {object} - A Redux action object with the gender as payload.
+*/
 
 export const setGenderFilter = (gender) => ({
     type: SET_GENDER_FILTER,

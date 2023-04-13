@@ -7,6 +7,17 @@ const initialState = {
   genderFilter: null,
 };
 
+/**
+
+The superhero reducer, responsible for managing the state of the superhero search app.
+
+@param {initialState} state - The current state of the app.
+
+@param {Object} action - The action object dispatched by the app.
+
+@return {initialState} - The new state of the app based on the action type.
+*/
+
 export const superHeroReducer = (state = initialState, action) => {
   switch (action.type) {
     case "SEARCH_START":
